@@ -200,7 +200,7 @@ class Model extends Module
 
   @fromForm: ->
     (new this).fromForm(arguments...)
-    
+
   @guid: ->
     guid()
 
@@ -234,9 +234,7 @@ class Model extends Module
 
   load: (atts) ->
     @.id = atts.id
-    delete atts.id
-
-    for key, value of atts
+    for key, value of atts when key isnt 'id'
       if typeof @[key] is 'function'
         @[key](value)
       else
